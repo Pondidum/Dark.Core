@@ -1,0 +1,8 @@
+## Interface: 50001
+## Title: Dark.Core
+## Author: Darkend / Singularity / Zenedar / EU
+## Version: 0.0.1
+## Notes: Utilities and common methods
+
+events.lua
+lib.lua
