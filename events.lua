@@ -26,7 +26,7 @@ local Events = {
 
 		end
 
-		this.unregister= function(event, key)
+		this.unregister = function(event, key)
 
 			if not event then return end
 			if not key then return end

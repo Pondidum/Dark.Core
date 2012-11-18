@@ -5,4 +5,6 @@
 ## Notes: Utilities and common methods
 
 events.lua
+media.lua
+style.lua
 lib.lua

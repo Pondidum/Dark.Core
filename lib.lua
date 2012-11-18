@@ -6,8 +6,10 @@ local Initalise = function()
 		Dark = {}
 	end
 
-	Dark.Core = {}
-	Dark.Core.events = ns.events.new()
+	Dark.core = {}
+	Dark.core.events = ns.events.new()
+	Dark.core.media = ns.media
+	Dark.core.style = ns.style.new()
 
 end
 
