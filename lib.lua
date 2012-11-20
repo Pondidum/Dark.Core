@@ -8,8 +8,14 @@ local Initalise = function()
 
 	Dark.core = {}
 	Dark.core.events = ns.events.new()
-	Dark.core.media = ns.media
-	Dark.core.style = ns.style.new()
+	Dark.core.settings = ns.settings
+	
+	Dark.core.textures = ns.media.textures
+	Dark.core.colors = ns.media.colors
+	Dark.core.fonts = ns.media.fonts
+
+	Dark.core.ui = ns.ui.new()
+	Dark.core.style = ns.style
 
 end
 

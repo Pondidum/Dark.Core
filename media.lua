@@ -16,7 +16,10 @@ local Media = {
 			background = {0, 0, 0, 0.4},
 		}
 
-		this.fonts = {}
+		this.fonts = {
+			normal = [[Interface\AddOns\Darkui\media\fonts\PT-Sans-Narrow.ttf]],
+			--normal = [[Interface\AddOns\Darkui\media\fonts\PT-Sans-Narrow.ttf]],
+		}
 
 		return this 
 
