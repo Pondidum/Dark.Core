@@ -9,6 +9,10 @@ media.lua
 settings.lua
 
 ui.lua
+layout.lua
+layoutEngines\horizontalEngine.lua
+layoutEngines\verticalEngine.lua
+
 style.lua
 
 lib.lua
