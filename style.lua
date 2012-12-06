@@ -147,6 +147,8 @@ local Style = {
 
 			frame.bg = bg
 			
+			return bg
+			
 		end
 
 		return this
