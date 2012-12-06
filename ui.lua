@@ -8,6 +8,9 @@ local UI = {
 
 		this.createFont = function(parent, fontName, fontHeight, fontStyle)
 
+			fontName = fontName or ns.media.fonts.normal
+			fontHeight = fontHeight or 12
+
 			local fs = parent:CreateFontString(nil, "OVERLAY")
 			
 			fs:SetFont(fontName, fontHeight, fontStyle)
