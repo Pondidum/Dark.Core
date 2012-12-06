@@ -4,8 +4,10 @@ local Events = {
 	
 	new = function()
 
-		local this = {}
 		local eventMap = {}
+		local updateMap = {}
+
+		local this = {}
 		local frame = CreateFrame("Frame", "DarkCoreEventFrame")
 
 		this.register = function(event, key, handler)
@@ -37,6 +39,23 @@ local Events = {
 
 		end
 
+		this.registerOnUpdate = function(key, handler)
+
+			if not key then return end
+			if not handler then return end
+
+			updateMap[key] = handler
+
+		end
+
+		this.unregisterOnUpdate = function(key)
+
+			if not key then return end
+
+			updateMap[key] = nil
+
+		end
+
 		frame:SetScript("OnEvent", function(self, event, ...)
 			
 			if eventMap[event] then
@@ -47,6 +66,13 @@ local Events = {
 
 		end)
 
+		frame:SetScript("OnUpdate", function(self, elapsed)
+
+			for key, handler in pairs(updateMap) do
+				handler(self, elapsed)
+			end
+
+		end)
 
 		return this
 
