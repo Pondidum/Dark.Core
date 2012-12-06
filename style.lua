@@ -126,6 +126,8 @@ local Style = {
 
 			frame.shadow = shadow
 
+			return shadow
+			
 		end
 
 		this.addBackground = function(frame)
