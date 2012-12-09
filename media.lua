@@ -9,6 +9,7 @@ local Media = {
 		this.textures = {
 			shadow = [[Interface\AddOns\Dark.Core\media\textures\shadow]],
 			normal = [[Interface\AddOns\Dark.Core\media\textures\normal]],
+			raidmarks = [[Interface\AddOns\Dark.Core\media\textures\raidicons.blp]],
 		}
 		
 		this.colors = {
