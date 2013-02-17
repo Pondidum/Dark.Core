@@ -5,7 +5,8 @@ local UI = {
 	new = function()
 
 		local this = {}
-
+		local fake = function() end
+		
 		this.createFont = function(parent, fontName, fontHeight, fontStyle)
 
 			fontName = fontName or ns.media.fonts.normal
@@ -19,6 +20,19 @@ local UI = {
 			fs:SetShadowOffset(1.25, -1.25)
 
 			return fs
+
+		end
+
+		this.killFrame = function(frame)
+
+			if frame == nil then return end
+
+			if frame.UnregisterAllEvents then
+				frame:UnregisterAllEvents()
+			end
+
+			frame.Show = fake
+			frame:Hide()
 
 		end
 
