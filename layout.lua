@@ -12,6 +12,11 @@ local layoutEngine = {
 				marginTop = 2,
 				marginBottom = 2,
 
+				paddingLeft = 2,
+				paddingRight = 2,
+				paddingTop = 2,
+				paddingBottom = 2,
+
 				defaultChildHeight = 32,
 				defaultChildWidth = 32,
 				forceChildSize = false,

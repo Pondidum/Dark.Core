@@ -5,8 +5,8 @@ ns.layout.addEngine("VERTICAL", function(frame, children)
 	local settings = frame.layout
 
 
-	local x = settings.MarginLeft
-	local y = settings.MarginTop
+	local x = settings.paddingLeft
+	local y = settings.paddingTop
 	local currentColWidth = 0
 	
 	local direction = -1

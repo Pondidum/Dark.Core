@@ -5,8 +5,8 @@ ns.layout.addEngine("HORIZONTAL", function(frame, children)
 	local settings = frame.layout
 
 
-	local x = settings.marginLeft
-	local y = settings.marginTop
+	local x = settings.paddingLeft
+	local y = settings.paddingTop
 
 	local currentRowHeight = 0
 	local total = 0
