@@ -15,27 +15,23 @@ local Style = {
 			
 			local name = button:GetName()
 			
-			--> fixing a taint issue while changing totem flyout button in combat.
-			if name:match("MultiCast") then return end 
-			if name:match("ExtraActionButton") then return end
-			
-			local Icon = _G[name.."Icon"]
-			local Count = _G[name.."Count"]
+			local icon = _G[name.."Icon"]
+			local count = _G[name.."Count"]
 			local flash	 = _G[name.."Flash"]
 			local hotkey = _G[name.."HotKey"]
-			local Border  = _G[name.."Border"]
+			local border  = _G[name.."Border"]
 			local buttonName = _G[name.."Name"]
 			local normalTexture  = _G[name.."NormalTexture"]
-			
+
 			button:SetNormalTexture("")
 			flash:SetTexture("")
 
-			Border:Hide()
-			Border = fake
+			border:Hide()
+			border = fake
 
-			Count:ClearAllPoints()
-			Count:SetPoint("BOTTOMRIGHT", 0, 2)
-			Count:SetFont(fonts.normal, 12, "OUTLINE")
+			count:ClearAllPoints()
+			count:SetPoint("BOTTOMRIGHT", 0, 2)
+			count:SetFont(fonts.normal, 12, "OUTLINE")
 
 			buttonName:SetTextColor(hotkey:GetTextColor())
 			buttonName:SetFont(fonts.normal, 10, "OUTLINE")
@@ -55,28 +51,12 @@ local Style = {
 			normalTexture:SetPoint("TOPLEFT")
 			normalTexture:SetPoint("BOTTOMRIGHT")
 
-			Icon:SetTexCoord(.08, .92, .08, .92)
-			Icon:SetPoint("TOPLEFT", button, 0, 0)
-			Icon:SetPoint("BOTTOMRIGHT", button, 0, 0)
+			icon:SetTexCoord(.08, .92, .08, .92)
+			icon:SetPoint("TOPLEFT", button, 0, 0)
+			icon:SetPoint("BOTTOMRIGHT", button, 0, 0)
 
-			-- if not _G[name.."Panel"] then
-			-- 	-- resize all button not matching S.actionbars.buttonsize
-			-- 	if button:GetHeight() ~= S.actionbars.buttonsize and not InCombatLockdown() then --Taint fix for Flyout Buttons
-			-- 		button:SetSize(S.actionbars.buttonsize, S.actionbars.buttonsize)
-			-- 	end
-
-			-- 	-- create the bg/border panel
-			-- 	local panel = CreateFrame("Frame", name.."Panel", button)
-			-- 	panel:SetPoint("CENTER", button, "CENTER", 0, 0)
-			-- 	panel:SetSize(S.actionbars.buttonsize, S.actionbars.buttonsize)
-		 
-			-- 	panel:SetFrameStrata(button:GetFrameStrata())
-			-- 	panel:SetFrameLevel(button:GetFrameLevel() - 1)
-		 
-		 -- 		if Icon then
-			-- 	end
-
-			-- end
+			button:GetPushedTexture():SetTexture(0.9,0.8,0.1,0.3)
+			button:GetHighlightTexture():SetTexture(1,1,1,0.3)
 
 			if settings.showmacrokey ~= true or buttonName:GetText() == nil or buttonName:GetText() == "" then
 				buttonName:SetText("")
@@ -89,11 +69,6 @@ local Style = {
 				D.Kill(hotkey)
 			end
 
-			-- multiactionbars
-			-- local background = _G[name.."FloatingBG"]
-			-- if background then
-			-- 	D.Kill(background)
-			-- end
 		end
 
 
