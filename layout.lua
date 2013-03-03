@@ -37,7 +37,7 @@ local layoutEngine = {
 
 		this.init = function(frame, config)
 
-			local children = {}
+			frame.children = {}
 
 			frame.layout = setmetatable(config or {}, layoutProperties)
 
@@ -53,7 +53,7 @@ local layoutEngine = {
 					child:SetHeight(frame.layout.defaultChildHeight)
 				end
 
-				table.insert(children, child)
+				table.insert(frame.children, child)
 
 				frame.performLayout()
 
@@ -62,7 +62,7 @@ local layoutEngine = {
 			end
 
 			frame.clear = function()
-				children = {}
+				frame.children = {}
 				frame.performLayout()
 			end
 
@@ -71,7 +71,7 @@ local layoutEngine = {
 				local engine = engines[frame.layout.direction]
 
 				if engine then
-					engine(frame, children)
+					engine(frame, frame.children)
 				end
 
 			end

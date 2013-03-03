@@ -12,6 +12,7 @@ ui.lua
 layout.lua
 layoutEngines\horizontalEngine.lua
 layoutEngines\verticalEngine.lua
+layoutEngines\stack.lua
 
 style.lua
 
