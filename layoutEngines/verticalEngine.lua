@@ -15,7 +15,6 @@ ns.layout.addEngine("VERTICAL", function(frame, children)
 		direction = 1
 	end
 
-	local frames = self.frames
 	local total = 0
 
 	for i, child in ipairs(children) do

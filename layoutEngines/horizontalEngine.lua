@@ -7,8 +7,14 @@ ns.layout.addEngine("HORIZONTAL", function(frame, children)
 
 	local x = settings.paddingLeft
 	local y = settings.paddingTop
-
 	local currentRowHeight = 0
+
+	local direction = 1
+
+	if settings.origin:find("RIGHT") then
+		direction = -1
+	end
+
 	local total = 0
 	
 	for i, child in ipairs(children) do
@@ -19,7 +25,7 @@ ns.layout.addEngine("HORIZONTAL", function(frame, children)
 			currentRowHeight = child:GetHeight()
 		end
 		
-		child:SetPoint(settings.origin, frame, settings.origin, x, -y)
+		child:SetPoint(settings.origin, frame, settings.origin, x * direction, -y)
 		
 		x = x + child:GetWidth() + settings.marginRight
 		
