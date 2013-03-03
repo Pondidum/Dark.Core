@@ -1,46 +1,66 @@
 local addon, ns = ...
 
 local bottomMode = {
-	firstAnchor = "BOTTOMLEFT",
-	secondAnchor = "BOTTOMRIGHT",
-	direction = 1,
 
 	getSpacing 				= function(s) return s.marginTop + s.marginBottom end,
 	getStartPadding 		= function(s) return s.paddingBottom end,
 	getFinishPadding 		= function(s) return s.paddingTop end,
 	getChildDimension 		= function(c) return c:GetHeight() end,
 	setContainerDimension 	= function(container, value) container:SetHeight(value) end,
+
+	setPoint = function(container, child, settings, offset) 
+		child:SetPoint("BOTTOMLEFT", container, "BOTTOMLEFT", settings.paddingLeft, offset)
+		child:SetPoint("BOTTOMRIGHT", container, "BOTTOMRIGHT", -settings.paddingRight, offset)
+	end,
 }
 
 local topMode = {
-	firstAnchor = "TOPLEFT",
-	secondAnchor = "TOPRIGHT",
-	direction = -1,
 
 	getSpacing 				= function(s) return s.marginTop + s.marginBottom end,
 	getStartPadding 		= function(s) return s.paddingTop end,
 	getFinishPadding 		= function(s) return s.paddingBottom end,
 	getChildDimension 		= function(c) return c:GetHeight() end,
 	setContainerDimension 	= function(container, value) container:SetHeight(value) end,
+
+	setPoint = function(container, child, settings, offset) 
+		child:SetPoint("TOPLEFT", container, "TOPLEFT", settings.paddingLeft, -offset)
+		child:SetPoint("TOPRIGHT", container, "TOPRIGHT", -settings.paddingRight, -offset)
+	end,
 }
 
 local leftMode = {
-	firstAnchor = "TOPLEFT",
-	secondAnchor = "BOTTOMLEFT",
-	direction = 1,
 
 	getSpacing 				= function(s) return s.marginLeft + s.marginRight end,
 	getStartPadding 		= function(s) return s.paddingLeft end,
 	getFinishPadding 		= function(s) return s.paddingRight end,
 	getChildDimension 		= function(c) return c:GetWidth() end,
 	setContainerDimension 	= function(container, value) container:SetWidth(value) end,
+
+	setPoint = function(container, child, settings, offset) 
+		child:SetPoint("TOPLEFT", container, "TOPLEFT", offset, -settings.paddingTop)
+		child:SetPoint("BOTTOMLEFT", container, "BOTTOMLEFT", offset, settings.paddingBottom)
+	end,
 }
 
-local 
+local rightMode = {
+
+	getSpacing 				= function(s) return s.marginLeft + s.marginRight end,
+	getStartPadding 		= function(s) return s.paddingRight end,
+	getFinishPadding 		= function(s) return s.paddingLeft end,
+	getChildDimension 		= function(c) return c:GetWidth() end,
+	setContainerDimension 	= function(container, value) container:SetWidth(value) end,
+
+	setPoint = function(container, child, settings, offset) 
+		child:SetPoint("TOPRIGHT", container, "TOPRIGHT", -offset, -settings.paddingTop)
+		child:SetPoint("BOTTOMRIGHT", container, "BOTTOMRIGHT", -offset, settings.paddingBottom)
+	end,
+}
 
 local modes = {
 	BOTTOM = bottomMode,
 	TOP = topMode,
+	LEFT = leftMode,
+	RIGHT = rightMode,
 }
 
 local getSortedChildren = function(children)
@@ -67,29 +87,27 @@ local getSortedChildren = function(children)
 end
 
 ns.layout.addEngine("STACK", function(frame, children)
-	print("stacking")
+
 	local settings = frame.layout
 	local sorted = getSortedChildren(children)
 	
 	local mode = modes[settings.origin] or bottomMode
 
-	local space = mode.getSpacing(settings) --settings.marginTop + settings.marginBottom
-	local offset = mode.getStartPadding(settings) --settings.paddingBottom
+	local space = mode.getSpacing(settings)
+	local offset = mode.getStartPadding(settings)
 	
 	for i, child in ipairs(sorted) do
 		
-		print(i, child:GetName(), child.index)
 		child:ClearAllPoints()
-		child:SetPoint(mode.firstAnchor, frame, mode.firstAnchor, settings.paddingLeft, offset * mode.direction)
-		child:SetPoint(mode.secondAnchor, frame, mode.secondAnchor, -settings.paddingRight, offset * mode.direction)
+		mode.setPoint(frame, child, settings, offset)
 		
 		offset = offset + mode.getChildDimension(child) + space
 		
 	end    
 	
 	if settings.autosize then
-		offset = offset - space + mode.getFinishPadding(settings) --settings.paddingTop
-		mode.setContainerDimension(frame, offset) --frame:SetHeight(offset)
+		offset = offset - space + mode.getFinishPadding(settings)
+		mode.setContainerDimension(frame, offset)
 	end
 		
 end)
