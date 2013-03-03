@@ -9,7 +9,8 @@ local bottomMode = {
 	getStartPadding 		= function(s) return s.paddingBottom end,
 	getFinishPadding 		= function(s) return s.paddingTop end,
 	getChildDimension 		= function(c) return c:GetHeight() end,
-	setContainerDimension 	= function(container, value) container:SetHeight(value) end,}
+	setContainerDimension 	= function(container, value) container:SetHeight(value) end,
+}
 
 local topMode = {
 	firstAnchor = "TOPLEFT",
@@ -20,7 +21,22 @@ local topMode = {
 	getStartPadding 		= function(s) return s.paddingTop end,
 	getFinishPadding 		= function(s) return s.paddingBottom end,
 	getChildDimension 		= function(c) return c:GetHeight() end,
-	setContainerDimension 	= function(container, value) container:SetHeight(value) end,}
+	setContainerDimension 	= function(container, value) container:SetHeight(value) end,
+}
+
+local leftMode = {
+	firstAnchor = "TOPLEFT",
+	secondAnchor = "BOTTOMLEFT",
+	direction = 1,
+
+	getSpacing 				= function(s) return s.marginLeft + s.marginRight end,
+	getStartPadding 		= function(s) return s.paddingLeft end,
+	getFinishPadding 		= function(s) return s.paddingRight end,
+	getChildDimension 		= function(c) return c:GetWidth() end,
+	setContainerDimension 	= function(container, value) container:SetWidth(value) end,
+}
+
+local 
 
 local modes = {
 	BOTTOM = bottomMode,
