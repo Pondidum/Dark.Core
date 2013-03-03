@@ -24,15 +24,15 @@ local layoutEngine = {
 				wrap = false, 
 				autosize = false,
 				origin = "TOPLEFT",
-				direction = "HORIZONTAL",
+				type = "HORIZONTAL",
 			} 
 		}
 
 		local engines = {}
 		local this = {}
 
-		this.addEngine = function(direction, action) 
-			engines[direction] = action
+		this.addEngine = function(type, action) 
+			engines[type] = action
 		end
 
 		this.init = function(frame, config)
@@ -68,7 +68,7 @@ local layoutEngine = {
 
 			frame.performLayout = function()
 
-				local engine = engines[frame.layout.direction]
+				local engine = engines[frame.layout.type]
 
 				if engine then
 					engine(frame, frame.children)
