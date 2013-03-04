@@ -16,8 +16,9 @@ local Initalise = function()
 
 	Dark.core.ui = ns.ui.new()
 	Dark.core.layout = ns.layout
-	
 	Dark.core.style = ns.style
+
+	Dark.core.cache = ns.cache
 
 end
 

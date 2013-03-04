@@ -15,5 +15,6 @@ layoutEngines\verticalEngine.lua
 layoutEngines\stack.lua
 
 style.lua
+cache.lua
 
 lib.lua
