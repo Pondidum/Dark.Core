@@ -39,6 +39,21 @@ local cache = {
 
 		end
 
+		this.debug = function()
+
+			local total = #items
+			local inUse = 0
+
+			for i, v in ipairs(items) do
+				if v.inUse then
+					inUse = inUse + 1
+				end
+			end
+
+			print(string.format("Cache contains %d items, with %d in use.", total, inUse))
+
+		end
+
 		return this
 
 	end,
