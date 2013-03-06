@@ -36,6 +36,53 @@ local UI = {
 
 		end
 
+		this.createCooldownBar = function(name, parent)
+
+			local frame = CreateFrame("Statusbar", name, parent)
+
+			local text = ui.createFont(frame)
+			text:SetAllPoints(frame)
+			text:SetJustifyH("RIGHT")
+			frame.text = text
+
+			local cdStart, cdDuration = 0, 0
+			local fill = false
+
+			frame.setCooldown = function(start, duration)
+				cdStart = start
+				cdDuration = duration
+
+				frame:SetMinMaxValues(0, duration)
+				frame:Show()
+			end
+
+			frame.setReverseFill = function(value)
+				fill = not value
+			end
+
+			frame:SetScript("OnUpdate", function()
+
+				local t = GetTime() - cdStart
+
+				if t > cdDuration then
+					frame:Hide()
+
+				elseif fill then
+					frame:SetValue(t)
+					text:SetText(round(t, 1))
+
+				else
+					frame:SetValue(cdDuration - t)
+					text:SetText(round(cdDuration - t, 1))
+
+				end
+
+			end)
+
+			return frame
+
+		end
+		
 		return this 
 
 	end,
