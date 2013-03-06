@@ -1,5 +1,12 @@
 local addon, ns = ...
 
+
+local round = function(number, decimals)
+	if not decimals then decimals = 0 end
+    return (("%%.%df"):format(decimals)):format(number)
+end
+
+
 local UI = {
 	
 	new = function()
@@ -40,7 +47,7 @@ local UI = {
 
 			local frame = CreateFrame("Statusbar", name, parent)
 
-			local text = ui.createFont(frame)
+			local text = this.createFont(frame)
 			text:SetAllPoints(frame)
 			text:SetJustifyH("RIGHT")
 			frame.text = text
