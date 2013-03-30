@@ -3,42 +3,39 @@ local addon, ns = ...
 ns.layout.addEngine("HORIZONTAL", function(frame, children)
 
 	local settings = frame.layout
-
-
-	local x = settings.paddingLeft
+	local x = settings.paddingLeft 
 	local y = settings.paddingTop
-	local currentRowHeight = 0
 
 	local direction = 1
 
 	if settings.origin:find("RIGHT") then
 		direction = -1
 	end
-
-	local total = 0
 	
+	local maxHeight = 0
 	for i, child in ipairs(children) do
 		
 		if settings.wrap and x + child:GetWidth() > frame:GetWidth() then
-			x = settings.marginLeft
-			y = y + currentRowHeight + settings.marginTop
-			currentRowHeight = child:GetHeight()
+			x = settings.paddingLeft
+			y = y + maxHeight + settings.marginBottom + settings.marginTop
+			maxHeight = 0
 		end
-		
+
 		child:SetPoint(settings.origin, frame, settings.origin, x * direction, -y)
 		
-		x = x + child:GetWidth() + settings.marginRight
-		
-		if child:GetHeight() > currentRowHeight then
-			currentRowHeight = child:GetHeight()
+		x = x + child:GetWidth() + settings.marginLeft + settings.marginRight
+				
+		if child:GetHeight() > maxHeight then
+			maxHeight = child:GetHeight()
 		end
-		
-		total = x
 		
 	end
 
+	x = x - settings.marginLeft - settings.marginRight + settings.paddingRight
+	y = y + maxHeight + settings.paddingBottom
+
 	if settings.autosize then
-		frame:SetSize(total, currentRowHeight)
+		frame:SetSize(x, y)
 	end
 
 end)
