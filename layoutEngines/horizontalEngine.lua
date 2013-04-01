@@ -31,11 +31,13 @@ ns.layout.addEngine("HORIZONTAL", function(frame, children)
 		
 	end
 
-	x = x - settings.marginLeft - settings.marginRight + settings.paddingRight
-	y = y + maxHeight + settings.paddingBottom
-
 	if settings.autosize then
+
+		x = x - settings.marginLeft - settings.marginRight + settings.paddingRight
+		y = y + maxHeight + settings.paddingBottom
+
 		frame:SetSize(x, y)
+		
 	end
 
 end)
