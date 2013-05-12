@@ -1,16 +1,16 @@
 local addon, ns = ...
 
-local Events = {
+local eventMap = {}
+local updateMap = {}
+
+local events = {
 	
 	new = function()
-
-		local eventMap = {}
-		local updateMap = {}
 
 		local this = {}
 		local frame = CreateFrame("Frame", "DarkCoreEventFrame")
 
-		this.register = function(event, key, handler)
+		this.register = function(event, handler)
 
 			if not event then return end
 			if not handler then return end
@@ -20,40 +20,30 @@ local Events = {
 				frame:RegisterEvent(event)
 			end
 
-			if key and key ~= "" then
-				eventMap[event][key] = handler
-			else
-				table.insert(eventMap[event], handler)
-			end
+			eventMap[event][this] = handler
 
 		end
 
-		this.unregister = function(event, key)
+		this.unregister = function(event)
 
 			if not event then return end
-			if not key then return end
 
-			if eventMap[event] and eventMap[event][key] then
-				eventMap[event][key] = nil
+			if eventMap[event] and eventMap[event][this] then
+				eventMap[event][this] = nil
 			end
 
 		end
 
-		this.registerOnUpdate = function(key, handler)
+		this.registerOnUpdate = function(handler)
 
-			if not key then return end
 			if not handler then return end
 
-			updateMap[key] = handler
+			updateMap[this] = handler
 
 		end
 
-		this.unregisterOnUpdate = function(key)
-
-			if not key then return end
-
-			updateMap[key] = nil
-
+		this.unregisterOnUpdate = function()
+			updateMap[this] = nil
 		end
 
 		frame:SetScript("OnEvent", function(self, event, ...)
@@ -80,4 +70,4 @@ local Events = {
 
 }
 
-ns.events = Events
+ns.events = events

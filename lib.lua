@@ -7,7 +7,7 @@ local Initalise = function()
 	end
 
 	Dark.core = {}
-	Dark.core.events = ns.events.new()
+	Dark.core.events = ns.events
 	Dark.core.settings = ns.settings
 	
 	Dark.core.textures = ns.media.textures
