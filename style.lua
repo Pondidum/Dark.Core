@@ -2,7 +2,6 @@ local addon, ns = ...
 local fonts = ns.media.fonts
 local settings = ns.settings
 
-
 local fake = function() end
 
 local Style = {
@@ -22,6 +21,7 @@ local Style = {
 			local border  = _G[name.."Border"]
 			local buttonName = _G[name.."Name"]
 			local normalTexture  = _G[name.."NormalTexture"]
+			local floatingBackground = _G[name.."FloatingBG"]
 
 			button:SetNormalTexture("")
 			flash:SetTexture("")
@@ -69,6 +69,12 @@ local Style = {
 				D.Kill(hotkey)
 			end
 
+			if floatingBackground then
+				floatingBackground:SetTexture(nil)
+			end
+
+			this.addShadow(button)
+			this.addBackground(button)
 		end
 
 
