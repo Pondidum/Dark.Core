@@ -20,7 +20,7 @@ local Style = {
 			local hotkey = _G[name.."HotKey"]
 			local border  = _G[name.."Border"]
 			local buttonName = _G[name.."Name"]
-			local normalTexture  = _G[name.."NormalTexture"]
+			local normalTexture  = _G[name.."NormalTexture"] or _G[name.."NormalTexture2"]
 			local floatingBackground = _G[name.."FloatingBG"]
 
 			button:SetNormalTexture("")
