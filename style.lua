@@ -10,6 +10,22 @@ local Style = {
 
 		local this = {}
 
+		this.petActionButton = function(button)
+
+			this.actionButton(button)
+
+			local name = button:GetName()
+			local normal =_G[name.."NormalTexture2"]
+			local autoCast = _G[name.."AutoCastable"]
+
+			normal:SetTexture(nil)
+			normal:Hide()
+			normal:SetAlpha(0)
+
+			autoCast:SetAlpha(0)
+
+		end
+
 		this.actionButton = function(button)
 			
 			local name = button:GetName()
@@ -20,6 +36,7 @@ local Style = {
 			local hotkey = _G[name.."HotKey"]
 			local border  = _G[name.."Border"]
 			local buttonName = _G[name.."Name"]
+			local cooldown = _G[name.."Cooldown"]
 			local normalTexture  = _G[name.."NormalTexture"] or _G[name.."NormalTexture2"]
 			local floatingBackground = _G[name.."FloatingBG"]
 
@@ -58,6 +75,9 @@ local Style = {
 			button:GetPushedTexture():SetTexture(0.9,0.8,0.1,0.3)
 			button:GetHighlightTexture():SetTexture(1,1,1,0.3)
 
+			cooldown:ClearAllPoints()
+			cooldown:SetAllPoints(button)
+			
 			if settings.showmacrokey ~= true or buttonName:GetText() == nil or buttonName:GetText() == "" then
 				buttonName:SetText("")
 			else
