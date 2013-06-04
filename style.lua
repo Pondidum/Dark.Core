@@ -44,7 +44,7 @@ local Style = {
 			flash:SetTexture("")
 
 			border:Hide()
-			border = fake
+			border.Show = fake
 
 			count:ClearAllPoints()
 			count:SetPoint("BOTTOMRIGHT", 0, 2)
