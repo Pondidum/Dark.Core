@@ -16,5 +16,6 @@ layoutEngines\stack.lua
 
 style.lua
 cache.lua
+slash.lua
 
 lib.lua

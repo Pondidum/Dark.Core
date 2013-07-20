@@ -1,6 +1,6 @@
 local addon, ns = ...
 
-local Initalise = function()
+local initalise = function()
 
 	if Dark == nil then
 		Dark = {}
@@ -19,7 +19,8 @@ local Initalise = function()
 	Dark.core.style = ns.style
 
 	Dark.core.cache = ns.cache
+	Dark.core.slash = ns.slash.new()
 
 end
 
-Initalise()
+initalise()
