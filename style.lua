@@ -97,6 +97,35 @@ local Style = {
 			this.addBackground(button)
 		end
 
+		this.applyShadowTo = function(frame, offset)	
+
+			frame:SetBackdrop( { 
+				edgeFile = ns.media.textures.shadow, 
+				edgeSize = offset,
+				insets = {
+					left = 5, 
+					right = 5, 
+					top = 5, 
+					bottom = 5
+				},
+			})
+			
+			frame:SetBackdropColor(0, 0, 0, 0)
+			frame:SetBackdropBorderColor(unpack(ns.media.colors.shadow))
+
+		end
+
+		this.applyBackgroundTo = function(frame)
+
+			frame:SetBackdrop( { 
+				bgFile = ns.media.textures.normal,
+				edgeSize = 0,
+				tile = true,
+			})
+
+			frame:SetBackdropColor(unpack(ns.media.colors.background))
+
+		end
 
 		this.addShadow = function(frame, offset) 
 
@@ -111,19 +140,8 @@ local Style = {
 			shadow:SetPoint("BOTTOMLEFT", -offset, -offset)
 			shadow:SetPoint("TOPRIGHT", offset, offset)
 			shadow:SetPoint("BOTTOMRIGHT", offset, -offset)
-			shadow:SetBackdrop( { 
-				edgeFile = ns.media.textures.shadow, 
-				edgeSize = offset,
-				insets = {
-					left = 5, 
-					right = 5, 
-					top = 5, 
-					bottom = 5
-				},
-			})
-			
-			shadow:SetBackdropColor(0, 0, 0, 0)
-			shadow:SetBackdropBorderColor(unpack(ns.media.colors.shadow))
+
+			this.applyShadowTo(shadow, offset)
 
 			frame.shadow = shadow
 
@@ -140,14 +158,9 @@ local Style = {
 			bg:SetAllPoints(frame)
 			bg:SetFrameLevel(1)
 			bg:SetFrameStrata(frame:GetFrameStrata())
-			bg:SetBackdrop( { 
-				bgFile = ns.media.textures.normal,
-				edgeSize = 0,
-				tile = true,
-			})
 
-			bg:SetBackdropColor(unpack(ns.media.colors.background))
-
+			this.applyBackgroundTo(bg)
+			
 			frame.bg = bg
 			
 			return bg
