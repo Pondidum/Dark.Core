@@ -3,6 +3,7 @@ local fonts = ns.media.fonts
 local settings = ns.settings
 
 local fake = function() end
+local DEFAULT_SHADOW_OFFSET = 3
 
 local Style = {
 	
@@ -99,6 +100,8 @@ local Style = {
 
 		this.applyShadowTo = function(frame, offset)	
 
+			offset = offset or DEFAULT_SHADOW_OFFSET
+
 			frame:SetBackdrop( { 
 				edgeFile = ns.media.textures.shadow, 
 				edgeSize = offset,
@@ -130,7 +133,8 @@ local Style = {
 		this.addShadow = function(frame, offset) 
 
 			if frame.shadow then return end 
-			if offset == nil then offset = 3 end
+			
+			offset = offset or DEFAULT_SHADOW_OFFSET
 			
 			local shadow = CreateFrame("Frame", nil, frame)
 
