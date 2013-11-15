@@ -15,8 +15,16 @@ ns.layout.addEngine("VERTICAL", function(frame, children)
 	local maxWidth = 0
 	for i, child in ipairs(children) do
 		
+		if child:GetWidth() <= 0 or settings.forceChildSize then
+			child:SetWidth(settings.defaultChildWidth)
+		end
+
+		if child:GetHeight() <= 0 or settings.forceChildSize  then
+			child:SetHeight(settings.defaultChildHeight)
+		end
+
 		if settings.wrap and y + child:GetHeight() > frame:GetHeight() then
-			y = settings.settings.paddingTop
+			y = settings.paddingTop
 			x = x + maxWidth + settings.marginLeft + settings.marginRight
 			maxWidth = 0
 		end

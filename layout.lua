@@ -45,14 +45,6 @@ local layoutEngine = {
 
 				if child == nil then return end
 
-				if child:GetWidth() <= 0 or frame.layout.forceChildSize then
-					child:SetWidth(frame.layout.defaultChildWidth)
-				end
-
-				if child:GetHeight() <= 0 or frame.layout.forceChildSize  then
-					child:SetHeight(frame.layout.defaultChildHeight)
-				end
-
 				table.insert(frame.children, child)
 
 				frame.performLayout()

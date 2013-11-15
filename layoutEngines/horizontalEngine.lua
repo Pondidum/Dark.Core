@@ -15,6 +15,14 @@ ns.layout.addEngine("HORIZONTAL", function(frame, children)
 	local maxHeight = 0
 	for i, child in ipairs(children) do
 		
+		if child:GetWidth() <= 0 or settings.forceChildSize then
+			child:SetWidth(settings.defaultChildWidth)
+		end
+
+		if child:GetHeight() <= 0 or settings.forceChildSize  then
+			child:SetHeight(settings.defaultChildHeight)
+		end
+				
 		if settings.wrap and x + child:GetWidth() > frame:GetWidth() then
 			x = settings.paddingLeft
 			y = y + maxHeight + settings.marginBottom + settings.marginTop
