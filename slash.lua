@@ -1,13 +1,13 @@
 local addon, ns = ...
 
 local splitParts = function(args)
-	
+
 	local parts = {}
 	local part = ''
 	local inQuote = false
 
 	for letter in args:gmatch(".") do
-		
+
 		if letter == ' ' and not inQuote then
 
 			table.insert(parts, part)
@@ -34,7 +34,7 @@ local splitParts = function(args)
 end
 
 local slash = {
-    
+
 	new = function()
 
 		local handlers = {}
@@ -45,12 +45,12 @@ local slash = {
 		end
 
 		this.process = function(args)
-			
+
 			local parts = splitParts(args)
 			local parent = handlers
 
 			for i, part in ipairs(parts) do
-				
+
 				local current = parent[part]
 				local t = type(current)
 
