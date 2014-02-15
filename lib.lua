@@ -2,24 +2,27 @@ local addon, ns = ...
 
 local initalise = function()
 
+	local core = {
+		events = ns.events,
+		settings = ns.settings,
+
+		textures = ns.media.textures,
+		colors = ns.media.colors,
+		fonts = ns.media.fonts,
+
+		ui = ns.ui,
+		layout = ns.layout,
+		style = ns.style,
+
+		cache = ns.cache,
+		slash = ns.slash.new(),
+	}
+
 	if Dark == nil then
 		Dark = {}
 	end
 
-	Dark.core = {}
-	Dark.core.events = ns.events
-	Dark.core.settings = ns.settings
-	
-	Dark.core.textures = ns.media.textures
-	Dark.core.colors = ns.media.colors
-	Dark.core.fonts = ns.media.fonts
-
-	Dark.core.ui = ns.ui
-	Dark.core.layout = ns.layout
-	Dark.core.style = ns.style
-
-	Dark.core.cache = ns.cache
-	Dark.core.slash = ns.slash.new()
+	Dark.core = core
 
 end
 
