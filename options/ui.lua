@@ -21,8 +21,10 @@ local options = {
 			header:SetPoint("RIGHT")
 			header:SetPoint("TOP")
 			header:SetHeight(30)
-			
+
 			header:SetText(config.description)
+
+			InterfaceOptions_AddCategory(configUi)
 
 		end
 
