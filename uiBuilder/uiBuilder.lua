@@ -1,11 +1,6 @@
 local addon, ns = ...
 
-local buildName = function(parent, name)
-	return name:gsub("$parent", parent:GetName())
-end
-
 local constructors = {}
-
 local actions = {}
 
 local function build(host, config)
