@@ -22,6 +22,6 @@ uiBuilder\uiBuilder.lua
 uiBuilder\constructors.lua
 uiBuilder\actions.lua
 
-options\optionsUi.lua
+options.lua
 
 lib.lua
