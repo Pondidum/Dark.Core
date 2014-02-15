@@ -16,6 +16,7 @@ local initalise = function()
 
 		cache = ns.cache,
 		slash = ns.slash.new(),
+		options = ns.options.new(),
 	}
 
 	if Dark == nil then

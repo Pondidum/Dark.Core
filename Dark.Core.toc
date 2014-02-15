@@ -18,4 +18,6 @@ style.lua
 cache.lua
 slash.lua
 
+options\ui.lua
+
 lib.lua
