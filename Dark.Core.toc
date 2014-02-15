@@ -18,6 +18,10 @@ style.lua
 cache.lua
 slash.lua
 
+uiBuilder\uiBuilder.lua
+uiBuilder\constructors.lua
+uiBuilder\actions.lua
+
 options\optionsUi.lua
 
 lib.lua

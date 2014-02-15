@@ -4,19 +4,9 @@ local buildName = function(parent, name)
 	return name:gsub("$parent", parent:GetName())
 end
 
-local constructors = {
+local constructors = {}
 
-	checkbox = function(parent, config)
-		return CreateFrame("checkbox", buildName(parent, config.name), parent)
-	end,
-
-}
-
-local actions = {
-	size = function(self, value)
-		self:SetSize(unpack(value))
-	end,
-}
+local actions = {}
 
 local function build(host, config)
 
@@ -47,7 +37,7 @@ local function build(host, config)
 end
 
 local builder = {
-	
+
 	addAction = function(key, action)
 		actions[key] = action
 	end,
