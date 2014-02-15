@@ -7,6 +7,10 @@ local function build(host, config)
 
 	local ctor = constructors[config.type]
 
+	if not ctor then
+		return
+	end
+
 	local control = ctor(host, config)
 
 	for actionName, value in pairs(config) do
