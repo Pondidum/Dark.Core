@@ -7,20 +7,20 @@ local round = function(number, decimals)
 end
 
 
-local UI = {
-	
+local ui = {
+
 	new = function()
 
 		local this = {}
 		local fake = function() end
-		
+
 		this.createFont = function(parent, fontName, fontHeight, fontStyle)
 
 			fontName = fontName or ns.media.fonts.normal
 			fontHeight = fontHeight or 12
 
 			local fs = parent:CreateFontString(nil, "OVERLAY")
-			
+
 			fs:SetFont(fontName, fontHeight, fontStyle)
 			fs:SetJustifyH("LEFT")
 			fs:SetShadowColor(0, 0, 0)
@@ -89,11 +89,11 @@ local UI = {
 			return frame
 
 		end
-		
-		return this 
+
+		return this
 
 	end,
 
 }
 
-ns.ui = UI
+ns.ui = ui.new()

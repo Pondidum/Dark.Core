@@ -14,7 +14,7 @@ local initalise = function()
 	Dark.core.colors = ns.media.colors
 	Dark.core.fonts = ns.media.fonts
 
-	Dark.core.ui = ns.ui.new()
+	Dark.core.ui = ns.ui
 	Dark.core.layout = ns.layout
 	Dark.core.style = ns.style
 
