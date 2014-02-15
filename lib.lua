@@ -13,6 +13,7 @@ local initalise = function()
 		ui = ns.ui,
 		layout = ns.layout,
 		style = ns.style,
+		builder = ns.builder,
 
 		cache = ns.cache,
 		slash = ns.slash.new(),
