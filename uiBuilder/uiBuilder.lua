@@ -9,7 +9,7 @@ local function build(host, config)
 	local control = host
 
 	if ctor then
-		ctor(host, config)
+		control = ctor(host, config)
 	end
 
 	for actionName, value in pairs(config) do
