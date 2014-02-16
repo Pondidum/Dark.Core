@@ -11,5 +11,13 @@ builder.addConstructor("frame", function(parent, config)
 end)
 
 builder.addConstructor("checkbox", function(parent, config)
-	return CreateFrame("checkbox", buildName(parent, config.name), parent)
+	return CreateFrame("checkbutton", buildName(parent, config.name), parent, config.template)
+end)
+
+builder.addConstructor("label", function(parent, config)
+
+	local font = parent:CreateFontString(buildName(parent, config.name), "OVERLAY")
+	font:SetFont(ns.media.fonts.normal, 12)
+
+	return font
 end)
