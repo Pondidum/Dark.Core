@@ -6,12 +6,11 @@ local actions = {}
 local function build(host, config)
 
 	local ctor = constructors[config.type]
+	local control = host
 
-	if not ctor then
-		return
+	if ctor then
+		ctor(host, config)
 	end
-
-	local control = ctor(host, config)
 
 	for actionName, value in pairs(config) do
 
@@ -48,7 +47,6 @@ local builder = {
 	build = function(parent, config)
 		return build(parent, config)
 	end,
-
 }
 
 ns.builder = builder
