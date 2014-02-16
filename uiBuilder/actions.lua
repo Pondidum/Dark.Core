@@ -18,3 +18,7 @@ builder.addAction("points", function(self, value)
 	end
 
 end)
+
+builder.addAction("text", function(self, value)
+	self:SetText(value)
+end)
