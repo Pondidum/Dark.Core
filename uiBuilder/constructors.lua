@@ -2,6 +2,7 @@ local addon, ns = ...
 local builder = ns.builder
 
 local buildName = function(parent, name)
+	local name = name or ""
 	return name:gsub("$parent", parent:GetName())
 end
 
