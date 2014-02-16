@@ -30,7 +30,7 @@ local options = {
 			container:SetPoint("TOPRIGHT", header, "BOTTOMRIGHT", 0, 5)
 			container:SetPoint("BOTTOM", configUi, "BOTTOM", 0, 10)
 
-			builder.build(configUi, config)
+			builder.build(container, config)
 
 		end
 
