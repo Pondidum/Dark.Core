@@ -22,3 +22,21 @@ end)
 builder.addAction("text", function(self, value)
 	self:SetText(value)
 end)
+
+builder.addAction("items", function(self, value)
+
+	UIDropDownMenu_Initialize(self, function(self, level)
+
+		for k, v in pairs(value) do
+
+			local info = UIDropDownMenu_CreateInfo()
+			info.text = v
+			info.value = k
+
+			UIDropDownMenu_AddButton(info, level)
+
+		end
+
+	end)
+
+end)
