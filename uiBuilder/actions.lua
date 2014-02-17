@@ -25,7 +25,7 @@ end)
 
 builder.addAction("items", function(self, value)
 
-	UIDropDownMenu_Initialize(self, function(self, level)
+	UIDropDownMenu_Initialize(self, function(menu, level)
 
 		for k, v in pairs(value) do
 
@@ -33,10 +33,16 @@ builder.addAction("items", function(self, value)
 			info.text = v
 			info.value = k
 
+			info.func = function(item)
+				UIDropDownMenu_SetSelectedID(self, item:GetID())
+			end
+
 			UIDropDownMenu_AddButton(info, level)
 
 		end
 
 	end)
+
+	UIDropDownMenu_JustifyText(self, "LEFT")
 
 end)
