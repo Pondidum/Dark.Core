@@ -21,3 +21,7 @@ builder.addConstructor("label", function(parent, config)
 
 	return font
 end)
+
+builder.addConstructor("dropdown", function(parent, config)
+	return CreateFrame("frame", buildName(parent, config.name), parent, "UIDropDownMenuTemplate")
+end)
