@@ -20,8 +20,19 @@ builder.addConstructor("label", function(parent, config)
 	font:SetFont(ns.media.fonts.normal, 12)
 
 	return font
+
 end)
 
 builder.addConstructor("dropdown", function(parent, config)
 	return CreateFrame("frame", buildName(parent, config.name), parent, "UIDropDownMenuTemplate")
+end)
+
+builder.addConstructor("textbox", function(parent, config)
+
+	local edit = CreateFrame("editbox", buildName(parent, config.name), parent, "InputBoxTemplate")
+	edit:SetAutoFocus(false)
+	edit:SetFont(ns.media.fonts.normal, 12)
+
+	return edit
+
 end)
