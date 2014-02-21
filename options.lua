@@ -2,6 +2,45 @@ local addon, ns = ...
 local ui = ns.ui
 local builder = ns.builder
 
+local function recurseControls(savers, loaders, control)
+
+	if control.save then
+		table.insert(savers, control.save)
+	end
+
+	if control.load then
+		table.insert(loaders, control.load)
+	end
+
+	for i, child in ipairs(control.children) do
+		recurseControls(savers, loaders, child)
+	end
+
+end
+
+local collectActions = function(control)
+
+	local savers = {}
+	local loaders = {}
+
+	recurseControls(savers, loaders, control)
+
+	local save = function()
+		for i, action in ipairs(savers) do
+			action()
+		end
+	end
+
+	local load = function()
+		for i, action in ipairs(loaders) do
+			action()
+		end
+	end
+
+	return save, load
+
+end
+
 local options = {
 
 	new = function()
@@ -17,8 +56,6 @@ local options = {
 			configUi.name = name
 			configUi.parent = panel.name
 
-			InterfaceOptions_AddCategory(configUi)
-
 			local header = ui.createFont(configUi)
 			header:SetPoint("TOPLEFT", configUi, "TOPLEFT", 10, -5)
 			header:SetPoint("TOPRIGHT", configUi, "TOPRIGHT", -10, -5)
@@ -31,6 +68,13 @@ local options = {
 			container:SetPoint("BOTTOM", configUi, "BOTTOM", 0, 10)
 
 			builder.build(container, config)
+
+			local save, load = collectActions(container)
+
+			configUi.okay = save
+			configUi.refresh = load
+
+			InterfaceOptions_AddCategory(configUi)
 
 		end
 
