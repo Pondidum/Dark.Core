@@ -22,10 +22,14 @@ local function build(host, config)
 
 	end
 
+	control.children = control.children or {}
+
 	if config.children then
 
 		for i, childConfig in ipairs(config.children) do
-			build(control, childConfig)
+
+			control.children[i] = build(control, childConfig)
+
 		end
 
 	end
