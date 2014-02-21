@@ -46,3 +46,11 @@ builder.addAction("items", function(self, value)
 	UIDropDownMenu_JustifyText(self, "LEFT")
 
 end)
+
+builder.addAction("actions", function(self, value)
+
+	for name, action in pairs(value) do
+		self[name] = function() action(self) end
+	end
+
+end)
