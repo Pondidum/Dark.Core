@@ -6,7 +6,7 @@ local fake = function() end
 local DEFAULT_SHADOW_OFFSET = 3
 
 local Style = {
-	
+
 	new = function()
 
 		local this = {}
@@ -27,10 +27,41 @@ local Style = {
 
 		end
 
-		this.actionButton = function(button)
-			
+		this.itemButton = function(button)
+
 			local name = button:GetName()
-			
+
+			local icon = button.icon
+			local search = button.searchOverlay
+			local count = _G[name.."Count"]
+			local normalTexture  = _G[name.."NormalTexture"]
+			local stock = _G[name.."Stock"] --fontstring
+
+			button:SetNormalTexture("")
+			button:GetPushedTexture():SetTexture(0.9,0.8,0.1,0.3)
+			button:GetHighlightTexture():SetTexture(1,1,1,0.3)
+
+
+			count:ClearAllPoints()
+			count:SetPoint("BOTTOMRIGHT", 0, 2)
+			count:SetFont(fonts.normal, 12, "OUTLINE")
+
+			icon:SetTexCoord(.08, .92, .08, .92)
+			icon:SetPoint("TOPLEFT", button, 0, 0)
+			icon:SetPoint("BOTTOMRIGHT", button, 0, 0)
+
+			normalTexture:ClearAllPoints()
+			normalTexture:SetPoint("TOPLEFT")
+			normalTexture:SetPoint("BOTTOMRIGHT")
+
+			this.addShadow(button)
+			this.addBackground(button)
+		end
+
+		this.actionButton = function(button)
+
+			local name = button:GetName()
+
 			local icon = _G[name.."Icon"]
 			local count = _G[name.."Count"]
 			local flash	 = _G[name.."Flash"]
@@ -42,6 +73,8 @@ local Style = {
 			local floatingBackground = _G[name.."FloatingBG"]
 
 			button:SetNormalTexture("")
+			button:GetPushedTexture():SetTexture(0.9,0.8,0.1,0.3)
+			button:GetHighlightTexture():SetTexture(1,1,1,0.3)
 			flash:SetTexture("")
 
 			border:Hide()
@@ -56,7 +89,7 @@ local Style = {
 			buttonName:SetJustifyH("LEFT")
 			buttonName:ClearAllPoints()
 			buttonName:SetPoint("TOPLEFT", button, 0, 0)
-		 
+
 			hotkey:ClearAllPoints()
 			hotkey:SetPoint("TOPRIGHT", 2, 0)
 			hotkey:SetFont(fonts.normal, 10, "OUTLINE")
@@ -73,18 +106,15 @@ local Style = {
 			icon:SetPoint("TOPLEFT", button, 0, 0)
 			icon:SetPoint("BOTTOMRIGHT", button, 0, 0)
 
-			button:GetPushedTexture():SetTexture(0.9,0.8,0.1,0.3)
-			button:GetHighlightTexture():SetTexture(1,1,1,0.3)
-
 			cooldown:ClearAllPoints()
 			cooldown:SetAllPoints(button)
-			
+
 			if settings.showmacrokey ~= true or buttonName:GetText() == nil or buttonName:GetText() == "" then
 				buttonName:SetText("")
 			else
 				buttonName:SetText("M")
 			end
-			
+
 			if settings.showhotkey ~= true then
 				hotkey:SetText("")
 				D.Kill(hotkey)
@@ -98,21 +128,21 @@ local Style = {
 			this.addBackground(button)
 		end
 
-		this.applyShadowTo = function(frame, offset)	
+		this.applyShadowTo = function(frame, offset)
 
 			offset = offset or DEFAULT_SHADOW_OFFSET
 
-			frame:SetBackdrop( { 
-				edgeFile = ns.media.textures.shadow, 
+			frame:SetBackdrop( {
+				edgeFile = ns.media.textures.shadow,
 				edgeSize = offset,
 				insets = {
-					left = 5, 
-					right = 5, 
-					top = 5, 
+					left = 5,
+					right = 5,
+					top = 5,
 					bottom = 5
 				},
 			})
-			
+
 			frame:SetBackdropColor(0, 0, 0, 0)
 			frame:SetBackdropBorderColor(unpack(ns.media.colors.shadow))
 
@@ -120,7 +150,7 @@ local Style = {
 
 		this.applyBackgroundTo = function(frame)
 
-			frame:SetBackdrop( { 
+			frame:SetBackdrop( {
 				bgFile = ns.media.textures.normal,
 				edgeSize = 0,
 				tile = true,
@@ -130,12 +160,12 @@ local Style = {
 
 		end
 
-		this.addShadow = function(frame, offset) 
+		this.addShadow = function(frame, offset)
 
-			if frame.shadow then return end 
-			
+			if frame.shadow then return end
+
 			offset = offset or DEFAULT_SHADOW_OFFSET
-			
+
 			local shadow = CreateFrame("Frame", nil, frame)
 
 			shadow:SetFrameLevel(1)
@@ -150,7 +180,7 @@ local Style = {
 			frame.shadow = shadow
 
 			return shadow
-			
+
 		end
 
 		this.addBackground = function(frame)
@@ -164,16 +194,16 @@ local Style = {
 			bg:SetFrameStrata(frame:GetFrameStrata())
 
 			this.applyBackgroundTo(bg)
-			
+
 			frame.bg = bg
-			
+
 			return bg
-			
+
 		end
 
 		return this
 
 	end,
 }
-	
+
 ns.style = Style.new()
