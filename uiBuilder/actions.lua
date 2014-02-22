@@ -34,7 +34,7 @@ builder.addAction("items", function(self, value)
 			info.value = k
 
 			info.func = function(item)
-				UIDropDownMenu_SetSelectedID(self, item:GetID())
+				UIDropDownMenu_SetSelectedValue(self, item.value)
 			end
 
 			UIDropDownMenu_AddButton(info, level)
