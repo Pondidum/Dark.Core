@@ -3,12 +3,13 @@ local addon, ns = ...
 local eventMap = {}
 local updateMap = {}
 
+local frame = CreateFrame("Frame", "DarkCoreEventFrame")
+
 local events = {
 
 	new = function()
 
 		local this = {}
-		local frame = CreateFrame("Frame", "DarkCoreEventFrame")
 
 		this.register = function(event, handler)
 
