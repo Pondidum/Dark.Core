@@ -42,10 +42,13 @@ local cache = {
 
 		this.debug = function()
 
-			local total = #items
+			local total = 0
 			local inUse = 0
 
 			for entry, active in pairs(items) do
+
+				total = total + 1
+
 				if active then
 					inUse = inUse + 1
 				end
