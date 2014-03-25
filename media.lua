@@ -1,7 +1,7 @@
 local addon, ns = ...
 
 local Media = {
-	
+
 	new = function()
 
 		local this = {}
@@ -12,7 +12,7 @@ local Media = {
 			raidmarks = [[Interface\AddOns\Dark.Core\media\textures\raidicons.blp]],
 			empty = [[Interface\AddOns\Dark.Core\media\textures\empty]]
 		}
-		
+
 		this.colors = {
 			shadow =  {0, 0, 0, 0.8},
 			background = {0, 0, 0, 0.4},
@@ -24,16 +24,17 @@ local Media = {
 				[5] = { 75/255,  175/255, 76/255 }, -- Friendly
 				[6] = { 75/255,  175/255, 76/255 }, -- Honored
 				[7] = { 75/255,  175/255, 76/255 }, -- Revered
-				[8] = { 75/255,  175/255, 76/255 }, -- Exalted	
+				[8] = { 75/255,  175/255, 76/255 }, -- Exalted
 			},
 		}
 
 		this.fonts = {
 			normal = [[Interface\AddOns\Dark.Core\media\fonts\PT-Sans-Narrow.ttf]],
 			unitframes = [[Interface\AddOns\Darkui\media\fonts\BigNoodleTitling.ttf]],
+			combat = [[Interface\AddOns\Dark.Core\media\fonts\Ultima_Campagnoli.ttf]],
 		}
 
-		return this 
+		return this
 
 	end,
 
