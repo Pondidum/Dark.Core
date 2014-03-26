@@ -59,9 +59,9 @@ local Media = {
 		}
 
 		this.fonts = {
-			normal = [[Interface\AddOns\Dark.Core\media\fonts\PT-Sans-Narrow.ttf]],
-			unitframes = [[Interface\AddOns\Darkui\media\fonts\BigNoodleTitling.ttf]],
-			combat = [[Interface\AddOns\Dark.Core\media\fonts\Ultima_Campagnoli.ttf]],
+			normal 		= [[Interface\AddOns\Dark.Core\media\fonts\PT-Sans-Narrow.ttf]],
+			unitframes	= [[Interface\AddOns\Dark.Core\media\fonts\BigNoodleTitling.ttf]],
+			combat		= [[Interface\AddOns\Dark.Core\media\fonts\Ultima_Campagnoli.ttf]],
 		}
 
 		return this
