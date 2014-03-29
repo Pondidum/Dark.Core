@@ -54,7 +54,10 @@ local slash = {
 				local current = parent[part]
 				local t = type(current)
 
-				if t == "table" then
+				if current == nil then
+					print(string.format("Unknown argument '%s'", part))
+					return
+				elseif t == "table" then
 					parent = current
 				elseif t == "function" then
 					current(select(i+1, unpack(parts)))
