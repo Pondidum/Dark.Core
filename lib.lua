@@ -9,6 +9,7 @@ local initalise = function()
 		textures = ns.media.textures,
 		colors = ns.media.colors,
 		fonts = ns.media.fonts,
+		sounds = ns.media.sounds,
 
 		ui = ns.ui,
 		layout = ns.layout,
