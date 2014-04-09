@@ -64,6 +64,11 @@ local Media = {
 			combat		= [[Interface\AddOns\Dark.Core\media\fonts\Ultima_Campagnoli.ttf]],
 		}
 
+		this.sounds = {
+			warning = [[Interface\AddOns\Dark.Core\media\sounds\warning.mp3]],
+			whisper = [[Interface\AddOns\Dark.Core\media\sounds\whisper.mp3]],
+		}
+
 		return this
 
 	end,
