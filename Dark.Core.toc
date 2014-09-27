@@ -13,6 +13,7 @@ layout.lua
 layoutEngines\horizontalEngine.lua
 layoutEngines\verticalEngine.lua
 layoutEngines\stack.lua
+frameSeries.lua
 
 style.lua
 cache.lua

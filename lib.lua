@@ -15,6 +15,7 @@ local initalise = function()
 		layout = ns.layout,
 		style = ns.style,
 		builder = ns.builder,
+		frameSeries = ns.frameSeries,
 
 		cache = ns.cache,
 		slash = ns.slash.new(),
