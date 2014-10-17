@@ -29,18 +29,14 @@ local Style = {
 
 		this.itemButton = function(button)
 
-			local name = button:GetName()
-
 			local icon = button.icon
 			local search = button.searchOverlay
-			local count = _G[name.."Count"]
-			local normalTexture  = _G[name.."NormalTexture"]
-			local stock = _G[name.."Stock"] --fontstring
+			local count = button.Count
+			local normalTexture = button:GetNormalTexture()
 
 			button:SetNormalTexture("")
 			button:GetPushedTexture():SetTexture(0.9,0.8,0.1,0.3)
 			button:GetHighlightTexture():SetTexture(1,1,1,0.3)
-
 
 			count:ClearAllPoints()
 			count:SetPoint("BOTTOMRIGHT", 0, 2)
