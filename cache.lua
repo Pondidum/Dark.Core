@@ -32,10 +32,15 @@ local cache = {
 			items[entry] = false
 		end
 
-		this.recycleAll = function()
+		this.recycleAll = function(extraAction)
 
 			for entry, active in pairs(items) do
 				items[entry] = false
+
+				if extraAction then
+					extraAction(entry)
+				end
+
 			end
 
 		end
