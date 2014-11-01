@@ -74,7 +74,6 @@ local Style = {
 			flash:SetTexture("")
 
 			border:Hide()
-			border.Show = fake
 
 			count:ClearAllPoints()
 			count:SetPoint("BOTTOMRIGHT", 0, 2)
@@ -113,7 +112,7 @@ local Style = {
 
 			if settings.showhotkey ~= true then
 				hotkey:SetText("")
-				D.Kill(hotkey)
+				--D.Kill(hotkey)
 			end
 
 			if floatingBackground then
